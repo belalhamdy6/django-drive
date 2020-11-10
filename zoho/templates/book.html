@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{%load bootstrap4 %}
+
+
+{% block body %}
+<div class="container ">
+  <div class="row">
+    <div class="col-md-8 m-auto ">
+         <form class="form-inline my-2 my-lg-0 " method="GET">
+          {% bootstrap_form  myfilter.form %}
+
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+   <a href="{% url 'home:add' %}"><i class="fas fa-plus ml-5" style="font-size:27px"></i></a>
+</div>
+
+
+
+<div class="container ">
+  <div class="row">
+    {% for book in books %}
+    <div class="col-md-4">
+<div class="card" style="width: 18rem;">
+  <img src="{{book.the_book.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{book.book_name}}</h5>
+    <p class="card-text">Author: <b>{{book.author}}</b></p>
+    <p class="card-text">{{book.about_book}}</p>
+
+  </div>
+</div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}
